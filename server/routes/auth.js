@@ -1,6 +1,6 @@
-import express from 'express'
+const express = require('express')
 
-import { login, register, forgotPassword, resetPassword} from '../controls/auth'
+const { login, register, forgotPassword, resetPassword} = require('../controls/auth')
 
 const router = express.Router()
 
@@ -12,4 +12,5 @@ router.post('/forgotpassword', forgotPassword)
 
 router.put('/passwordreset/:resetToken', resetPassword)
 
-export default router
+
+module.export = router

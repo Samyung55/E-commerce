@@ -1,8 +1,8 @@
 const dotenv = require('dotenv')
 
-import dbConnection from './db'
-import products from './data/products.js'
-import Product from './models/Product.js'
+const dbConnection = require('./db')
+const products = require('./data/products.js')
+const Product = require('./models/Product.js')
 
 dotenv.config()
 

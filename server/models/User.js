@@ -53,4 +53,5 @@ userSchema.methods.createResetPasswordToken = function () {
 
 const User = mongoose.model('user', userSchema)
 
-export default User
+
+module.export = User

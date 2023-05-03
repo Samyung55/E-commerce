@@ -1,4 +1,4 @@
-import AppError from '../utils/AppError.js'
+const AppError = require('../utils/AppError.js')
 
 //MongoDB error
 const handleCastError = err => {
@@ -93,4 +93,5 @@ const errorHandler = (err, req, res, next) => {
     if (error.name === 'TokenExpiredError') error = handleJWTExpiredError()
 }
 
-export default errorHandler
+
+module.export = errorHandler

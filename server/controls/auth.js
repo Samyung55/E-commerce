@@ -1,11 +1,11 @@
-import bcrypt from 'bcryptjs'
-import jwt from 'jsonwebtoken'
-import crypto from 'crypto'
-import User from '../models/User'
-import AppError from '../utils/AppError'
+const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+const crypto = require('crypto')
+const User = require('../models/User')
+const AppError = require('../utils/AppError')
 
-import { catchAsync } from '../utils/catchAsync'
-import sendEmail from '../utils/sendEmail'
+const { catchAsync } = require('../utils/catchAsync')
+const sendEmail = require('../utils/sendEmail')
 
 const signToken = (id, email) => {
     const secret = process.env.JWT_SECRET

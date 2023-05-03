@@ -1,6 +1,6 @@
-import jwt from 'jsonwebtoken'
-import { catchAsync } from '../utils/catchAsync'
-import AppError from '../utils/AppError'
+const jwt = require('jsonwebtoken')
+const { catchAsync } = require('../utils/catchAsync')
+const AppError = require('../utils/AppError')
 
 const auth = catchAsync(async (req, res, next) => {
         const token = req.cookies.token
@@ -20,4 +20,5 @@ const auth = catchAsync(async (req, res, next) => {
    
 })
 
-export default auth
+
+module.export = auth

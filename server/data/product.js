@@ -55,4 +55,5 @@ const products = [
     },
   ];
   
-export default products
+
+  module.export = products
