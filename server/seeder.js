@@ -1,4 +1,4 @@
-import dotenv from 'dotenv'
+const dotenv = require('dotenv')
 
 import dbConnection from './db'
 import products from './data/products.js'

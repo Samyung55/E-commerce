@@ -1,15 +1,15 @@
-import express from 'express'
-import dotenv from 'dotenv'
-import cookieParser from 'cookie-parser'
-import csurf from 'csurf'
+const express = require('express')
+const dotenv = require('dotenv')
+const cookieParser = require('cookie-parser')
+const csurf = 'csurf'
 
-import dbConnection from './db'
-import AppError from './utils/AppError'
+const dbConnection = require('./db')
+const AppError = require('./utils/AppError')
 
-import errorHandler from './middleware/error'
+const errorHandler = require('./middleware/error')
 
-import productRoutes from './routes/products'
-import authRoutes from './routes/auth'
+const productRoutes = require('./routes/products')
+const authRoutes = require('./routes/auth')
 
 dotenv.config()
 
