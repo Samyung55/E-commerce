@@ -26,6 +26,7 @@ app.get('/api/csurf-token', (req, res) => {
     res.json({ csurfToken: req.csurfToken()})
 })
 
+app.use('/api/auth', authRoutes)
 app.all('*', (req, res, next) => {
     next(new AppError(`Can't find ${reg.originalUrl} on this server!`, 404))
 })
