@@ -1,10 +1,11 @@
+const express = require('express');
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const crypto = require('crypto')
 const User = require('../models/User')
 const AppError = require('../utils/AppError')
 
-const { catchAsync } = require('../utils/catchAsync')
+const catchAsync  = require('../utils/catchAsync')
 const sendEmail = require('../utils/sendEmail')
 
 const signToken = (id, email) => {
@@ -34,7 +35,9 @@ const createSendToken = (user, statusCode, req, res) => {
     })
 }
 
-export const login = catchAsync(async (req, res, next) => {
+const router = express.Router();
+
+router.post('/login', catchAsync(async (req, res, next) => {
     const {email, password} = req.body
 
     const existingUser = await User.findOne({ email })
@@ -46,9 +49,9 @@ export const login = catchAsync(async (req, res, next) => {
     if(!isPasswordCorrect) return next(new AppError('Invalid credentials', 400))
 
     createSendToken(existingUser, 200, req, res)
-})
+}))
 
-export const forgotPassword = catchAsync(async (req, res, next) => {
+router.post('/forgotpassword', catchAsync(async (req, res, next) => {
     const { email } = req.body
 
     const user = await User.findOne({ email })
@@ -82,9 +85,9 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
 
         return next(new AppError('Error sending email, please try again!', 500))
     }
-})
+}))
 
-export const resetPassword = catchAsync(async (req, res, next) => {
+router.post('/resetpassword/:resetToken', catchAsync(async (req, res, next) => {
     const resetPasswordToken = crypto
     .createHash('sha256')
     .update(req.params.resetToken)
@@ -106,4 +109,5 @@ export const resetPassword = catchAsync(async (req, res, next) => {
         success: true,
         data: "Password Updated",
     })
-})
+}))
+
