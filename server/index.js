@@ -2,7 +2,7 @@ const express = require('express')
 const dotenv = require('dotenv')
 const cookieParser = require('cookie-parser')
 const csurf = require('csurf');
-const mongoose = 
+const mongoose = require('mongoose')
 
 const dbConnection = require('./db')
 const AppError = require('./utils/AppError')
@@ -11,23 +11,19 @@ const errorHandler = require('./middleware/error')
 
 const authRoutes = require('./routes/auth')
 
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const connect = async () => {
+    try {
+        await mongoose.connect(process.env.URL)
+        console.log("connected to mongodb")
+    }
+    catch (error) {
+        console.error(error)
+    }
+}
 
-mongoose.connection.on('connected', () => {
-  console.log('Mongoose connected to DB');
-});
-
-mongoose.connection.on('error', (err) => {
-  console.log(`Mongoose connection error: ${err}`);
-});
-
-mongoose.connection.on('disconnected', () => {
-  console.log('Mongoose connection disconnected');
-});
-
+mongoose.connection.on("disconnected", () => {
+    console.log("mongodb disconnected")
+})
 dotenv.config()
 
 const app = express()
@@ -51,5 +47,6 @@ app.all('*', (req, res, next) => {
 const PORT = 4000;
 
 app.listen(PORT, () => {
+    connect()
   console.log(`Server is running on port ${PORT}`);
 });
