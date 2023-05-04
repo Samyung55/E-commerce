@@ -2,7 +2,7 @@ const express = require('express')
 const dotenv = require('dotenv')
 const cookieParser = require('cookie-parser')
 const csurf = require('csurf');
-
+const mongoose = 
 
 const dbConnection = require('./db')
 const AppError = require('./utils/AppError')
@@ -10,6 +10,23 @@ const AppError = require('./utils/AppError')
 const errorHandler = require('./middleware/error')
 
 const authRoutes = require('./routes/auth')
+
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+mongoose.connection.on('connected', () => {
+  console.log('Mongoose connected to DB');
+});
+
+mongoose.connection.on('error', (err) => {
+  console.log(`Mongoose connection error: ${err}`);
+});
+
+mongoose.connection.on('disconnected', () => {
+  console.log('Mongoose connection disconnected');
+});
 
 dotenv.config()
 
