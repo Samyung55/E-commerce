@@ -54,6 +54,22 @@ router.post('/login', async (req, res, next) => {
     }
 })
 
+router.post('/register', async (req, res, next) => {
+    const {username, email, password} = req.body
+
+    const existingUser = await User.findOne({email})
+
+    if (existingUser) return next(new AppError('Email already in use!', 400))
+
+    const user = await User.create({
+        username, 
+        email,
+        password
+    })
+
+    createSendToken(user, 201, req, res)
+})
+
 router.post('/forgotpassword', async (req, res, next) => {
     try {
         const { email } = req.body

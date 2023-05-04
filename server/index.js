@@ -31,7 +31,7 @@ app.use(express.json())
 app.use(cookieParser())
 
 const csurfProtection = csurf({
-    cookie: true
+    cookie: false
 })
 
 app.use(csurfProtection)
