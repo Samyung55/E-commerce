@@ -1,6 +1,7 @@
 const express = require('express')
 const dotenv = require('dotenv')
 const cookieParser = require('cookie-parser')
+const csurf = require('csurf');
 const mongoose = require('mongoose')
 
 const dbConnection = require('./db')
@@ -29,6 +30,19 @@ const app = express()
 app.use(express.json())
 app.use(cookieParser())
 
+const csurfProtection = csurf({
+    cookie: true
+})
+
+app.use(csurfProtection)
+
+app.get('/api/csurf-token', (req, res) => {
+    res.json({ csurfToken: req.csurfToken()})
+})
+
+app.all('*', (req, res, next) => {
+    next(new AppError(`Can't find ${reg.originalUrl} on this server!`, 404))
+})
 
 const PORT = 4000;
 
