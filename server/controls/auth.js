@@ -23,7 +23,7 @@ const createSendToken = (user, statusCode, req, res) => {
     res.cookie('token', token, {httpOnly: true} )
 
     //remove password
-    user.password = undefined
+    user.password = req.password
 
     res.status(statusCode).json({
         status: 'success',
