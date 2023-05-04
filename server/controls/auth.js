@@ -14,7 +14,7 @@ const signToken = (id, email) => {
         id
     }
 
-    return jwt.sign(payload, secret, {expiresIn: '1h'})
+    return jwt.sign(payload, secret, { expiresIn: '1h'})
 }
 
 const createSendToken = (user, statusCode, req, res) => {

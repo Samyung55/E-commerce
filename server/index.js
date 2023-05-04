@@ -1,7 +1,8 @@
 const express = require('express')
 const dotenv = require('dotenv')
 const cookieParser = require('cookie-parser')
-const csurf = 'csurf'
+const csurf = require('csurf');
+
 
 const dbConnection = require('./db')
 const AppError = require('./utils/AppError')
@@ -26,7 +27,12 @@ app.get('/api/csurf-token', (req, res) => {
     res.json({ csurfToken: req.csurfToken()})
 })
 
-app.use('/api/auth', authRoutes)
 app.all('*', (req, res, next) => {
     next(new AppError(`Can't find ${reg.originalUrl} on this server!`, 404))
 })
+
+const PORT = 4000;
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
