@@ -1,35 +1,64 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import {useState, useEffect } from 'react'
+import {Routes, Route, useNavigate} from 'react-router-dom'
+import axios from 'axios'
+
 import './App.css'
 
+import HomeScreen from './pages/Home'
+import ProductScreen from './pages/Product'
+import CartScreen from './pages/Cart'
+import LoginScreen from './pages/Login'
+import RegisterScreen from './pages/Register'
+import ForgotPasswordScreen from './pages/ForgotPassword'
+import ResetPasswordScreen from './pages/ResetPassword'
+
+import Navbar from './components/Navbar'
+import Backdrop from './components/Backdrop'
+import SideDrawer from './components/SideDrawer'
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [sideToggle, setSideToggle] = useState(false)
+
+  const user = JSON.parse(localStorage.getItem('profile'))
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const getCsrfToken =  async () => {
+
+      const { data } = await axios.get('/api/csrf-token')
+
+      axios.defaults.headers['X-CSRF-Token'] = data.csrfToken
+    }
+    
+    getCsrfToken()
+
+  }, [])
+
+  useEffect(()=>{
+    if (user) {
+      navigate('/')
+    }
+  }, [])
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+   <>
+   <Navbar click={()=>setSideToggle(true)}/>
+   <SideDrawer show={sideToggle} click={()=>setSideToggle(false)}/>
+   <Backdrop show={sideToggle} click={()=>setSideToggle(false)}/>
+
+   <Routes>
+
+     <Route path='/' element={!user ? <LoginScreen/> : <HomeScreen/>} />
+     <Route path='/login' element={<LoginScreen/>} />
+     <Route path='/register' element={<RegisterScreen/>} />
+     <Route path='/forgotpassword' element={<ForgotPasswordScreen/>} />
+     <Route path='/passwordreset/:token' element={<ResetPasswordScreen/>} />
+     <Route path='/product/:id' element={<ProductScreen/>} />
+     <Route path='/cart' element={<CartScreen/>} />
+   </Routes>
+   </>
+  );
 }
 
-export default App
+export default App;
