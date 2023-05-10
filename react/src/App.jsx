@@ -21,7 +21,6 @@ function App() {
 
   const user = JSON.parse(localStorage.getItem('profile'))
 
-  const navigate = useNavigate()
 
   useEffect(() => {
     const getCsrfToken =  async () => {
@@ -35,11 +34,7 @@ function App() {
 
   }, [])
 
-  useEffect(()=>{
-    if (user) {
-      navigate('/')
-    }
-  }, [])
+  
 
   return (
    <>

@@ -1,4 +1,4 @@
-import * as actionType from '../constants/cartConstants'
+import * as actionType from '../utils/cart'
 
 const cartReducer = (state, action) => {
     switch (action.type) {

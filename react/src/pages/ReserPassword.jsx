@@ -3,7 +3,7 @@ import {useForm} from 'react-hook-form'
 import { useParams, Link } from 'react-router-dom'
 import axios from 'axios'
 
-import './ResetPasswordScreen.css'
+import './ResetPassword.css'
 
 const ResetPasswordScreen = () => {
     const [error, setError] = useState('')
