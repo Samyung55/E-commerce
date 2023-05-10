@@ -67,5 +67,42 @@ const ProductScreen = () => {
     if (isLoading) return <h2>Loading...</h2>
     if(error) throw error
 
-    return
+    return (
+        <div className="productscreen">
+            <div className="productscreen__left">
+                <div className="left__image">
+                    <img src={imageUrl} alt="product" />
+                </div>
+                <div className="left__info">
+                    <p className="left__name">{name}</p>
+                    <p>Price: ${price}</p>
+                    <p>Descriptiom: {description}</p>
+                </div>
+            </div>
+
+            <div className="productscreen__right">
+                <div className="right__info">
+                    <p>
+                        Price: <span>${price}</span>
+                    </p>
+                    <p>
+                        Status: <span>{countInStock > 0 ? 'In Stock' : 'Out of Stock'}</span>
+                    </p>
+                    <p>
+                        Quantity
+                        <select value={quantity} onChange={(e)=>setQuantity(e.target.value)}>
+                            {[...Array(countInStock).keys()].map((x)=>(
+                            <option key={x+1} value={x+1}>{x+1}</option>
+                            ))}
+                        </select>
+                    </p>
+                    <p>
+                        <button type='button' onClick={addToCartHandler}>Add to Cart</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    )
 }
+
+export default ProductScreen
