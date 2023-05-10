@@ -39,7 +39,19 @@ const RegisterScreen = () => {
                     {errors.email?.type === 'required' && <span>Email is required</span>}
                     {errors.email?.type === 'pattern' && <span>Email is invalid</span>}
                 </div>
+                <div className="form__group">
+                    <label htmlFor='password'>Password</label>
+                    <input type='password' name='password' {...register('password', {required: true, minLength:6})} />
+                    {errors.password?.type === 'required' && <span>Password is required</span>}
+                {errors.password?.type === 'minLength' && <span>Password must be at least 6 characters long</span>}
+                </div>
+                
+                <div className="form__group">
+                    <input type='submit' value='Register' />
+                </div>
             </form>
         </div>
     )
 }
+
+export default RegisterScreen;
