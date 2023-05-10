@@ -12,3 +12,15 @@
     background-color: #fff;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
+
+.registerscreen__title {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.form__group,
+.form__group label,
+.form__group input {
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
