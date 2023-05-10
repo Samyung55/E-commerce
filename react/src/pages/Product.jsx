@@ -47,7 +47,25 @@ const ProductScreen = () => {
         try {
             const result = await getProductDetails(id)
 
-            
+            cartDispatch({ type: cartActionTypes.ADD_TO_CART, payload: {
+                id: result._id,
+                name: result.name,
+                imageUrl: result.imageUrl,
+                price: result.price,
+                countInStock: result.countInStock,
+                quantity: parseInt(quantity)
+            }})
+
+            navigate('/cart')
+
+        }
+        catch (error) {
+            console.log(error)
         }
     }
+
+    if (isLoading) return <h2>Loading...</h2>
+    if(error) throw error
+
+    return
 }
