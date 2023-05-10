@@ -24,3 +24,44 @@
     width: 100%;
     margin-bottom: 0.5rem;
 }
+
+
+.form__group label {
+    font-weight: bold;
+ }
+ .form__group input {
+     padding: 10px 20px;
+     border:none;
+     border-bottom: 1px solid transparent;
+     background-color: #eee;
+     outline-width: 0;
+     font-size: 1rem;
+ }
+ .form__group input:not(:first-child):hover {
+     border-bottom: 3px solid #dd219e;
+ }
+ 
+  .form__group input{
+     margin-top: 0.5rem;
+  }
+  .form__group input[type=submit]:hover {
+      background-color: #171717;
+      color: #fff;
+  }
+ 
+  .form__group span {
+      color: red;
+ 
+  }
+  .registerscreen__subtext {
+     text-align: center;
+     margin: 1rem;
+  }
+  .registerscreen__subtext a {
+     text-decoration: none;
+     color:#171717;
+     cursor: pointer;
+  }
+  .registerscreen__subtext a:hover {
+     color:#dd219e;
+  }
