@@ -12,7 +12,7 @@ const ForgotPasswordScreen = () => {
 
     const onSubmit = async (formData) => {
        try{ 
-        const { data } = await axios.post('http://localhost:4500/api/auth/forgotpassword',
+        const { data } = await axios.post('http://localhost:4000/forgotpassword',
         setSuccess(data.data)
         )
     }
