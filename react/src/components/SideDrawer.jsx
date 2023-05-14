@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 
-import './SideDrawer'
+import './SideDrawer.css'
 
 import { useCartContext } from "../context/contexts/cartContext";
 
@@ -21,7 +21,7 @@ const SideDrawer = ({show, click}) => {
       }
     
       return ( 
-        <div className={sideDrawerClass.join(' ')}>
+        <div className={SideDrawerClass.join(' ')}>
           <ul className='sidedrawer__links' onClick={click}>
     
             <li>
@@ -44,4 +44,4 @@ const SideDrawer = ({show, click}) => {
       )
 }
 
-export default SideDrawer
+export default SideDrawer;
