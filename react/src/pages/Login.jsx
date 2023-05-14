@@ -16,7 +16,7 @@ const LoginScreen = () => {
     const navigate = useNavigate()
 
     const onSubmit = async (FormData) => {
-        const { data } = await axios.post('localhost:4000/login', FormData)
+        const { data } = await axios.post('http://localhost:4000/login', FormData)
 
         dispatch({ type: actionTypes.AUTH, payload: data.data })
 
