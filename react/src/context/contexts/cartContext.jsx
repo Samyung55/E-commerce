@@ -1,7 +1,7 @@
 import { createContext, useReducer, useContext } from 'react'
 import cartReducer from '../reducers/cartRedux'
 
-const CartContext = createContext(null)
+const CartContext = createContext('')
 
 let cartState = {
     cartItems: []
@@ -29,3 +29,5 @@ export const useCartContext = () => {
 
     return context
 }
+
+console.log(CartContext)
