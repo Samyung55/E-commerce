@@ -16,7 +16,7 @@ const ResetPasswordScreen = () => {
     const onSubmit = async (formData) => {
         try {
             
-            const {data} = await axios.put(`/api/auth/passwordreset/${token}`, formData)
+            const {data} = await axios.put(`http://localhost:4000/${token}`, formData)
 
             setSuccess(data.data)
 
