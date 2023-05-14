@@ -36,7 +36,7 @@ const csurfProtection = csurf({
 
 
 
-app.get('/api/csurf-token', (req, res) => {
+app.get('/api/csrf-token', (req, res) => {
     res.json({ csurfToken: req.csurfToken()})
 })
 app.use(csurfProtection)
