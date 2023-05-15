@@ -30,9 +30,16 @@ const app = express()
 app.use(express.json())
 app.use(cookieParser())
 
+const csurfProtection = csurf({
+    cookie: true
+})
 
 
 
+app.get('/csrf-token', (req, res) => {
+    res.json({ csurfToken: req.csurfToken()})
+})
+app.use(csurfProtection)
 app.all('*', (req, res, next) => {
     next(new AppError(`Can't find ${reg.originalUrl} on this server!`, 404))
 })
