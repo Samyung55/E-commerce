@@ -25,7 +25,7 @@ function App() {
   useEffect(() => {
     const getCsrfToken =  async () => {
 
-      const { data } = await axios.get('http://localhost:4000/csrf-token')
+      const { data } = await axios.get('http://localhost:4000/csurf-token')
 
       axios.defaults.headers['X-CSRF-Token'] = data.csrfToken
     }
