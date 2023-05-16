@@ -3,6 +3,7 @@ const dotenv = require('dotenv')
 const cookieParser = require('cookie-parser')
 const csurf = require('csurf');
 const mongoose = require('mongoose')
+const cors = require('cors'); // Add this line
 
 const dbConnection = require('./db')
 const AppError = require('./utils/AppError')
@@ -50,3 +51,4 @@ app.listen(PORT, () => {
     connect()
   console.log(`Server is running on port ${PORT}`);
 });
+
