@@ -16,13 +16,13 @@ const RegisterScreen = () => {
     const navigate = useNavigate();
 
     const onSubmit = async (formData) => {
-        const  data  = axios.post('http://localhost:4000/register', formData)
-
-        dispatch({ type: actionTypes.AUTH, payload: data.data })
-
-        navigate('/')
+        const data = await axios.post('http://localhost:4000/register', formData);
+    
+        dispatch({ type: actionTypes.AUTH, payload: data.data });
+    
+        navigate('/');
     }
-
+    
     return (
         <div className="registerscreen" onSubmit={handleSubmit(onSubmit)}>
             <form action="" className="registerscreen__form">
