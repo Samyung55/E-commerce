@@ -22,6 +22,18 @@ function App() {
   const user = JSON.parse(localStorage.getItem('profile'))
 
 
+  useEffect(() => {
+    const getCsrfToken =  async () => {
+
+      const { data } = await axios.get('http://localhost:4000/csurf-token')
+
+      axios.defaults.headers['X-CSRF-Token'] = data.csrfToken
+    }
+    
+    getCsrfToken()
+
+  }, [])
+
   
 
   return (
