@@ -1,6 +1,5 @@
 const express = require('express');
-const Product = require('../models/Product');
-
+const Product = require('../models/product');
 
 
 const products = async (req, res, next) => {
@@ -24,4 +23,4 @@ const productsid = async (req, res, next) => {
     }
 };
 
-module.exports = {products, productsid}
+module.exports = { products, productsid };
