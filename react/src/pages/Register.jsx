@@ -16,7 +16,7 @@ const RegisterScreen = () => {
     const navigate = useNavigate();
 
     const onSubmit = async (formData) => {
-        const data = await axios.post('http://localhost:4000/register', formData);
+        const data = await axios.post('http://localhost:4000/api/auth/register', formData);
     
         dispatch({ type: actionTypes.AUTH, payload: data.data });
     
