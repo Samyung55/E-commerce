@@ -5,7 +5,7 @@ const csrf = require('csurf');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-const dbConnection = require('./db');
+const productRoutes = require('./routes/product')
 const AppError = require('./utils/AppError');
 const errorHandler = require('./middleware/error');
 const authRoutes = require('./routes/auth');
@@ -35,6 +35,7 @@ app.use(cors({
 const csrfProtection = csrf({ cookie: true });
 
 app.use('/api/auth', authRoutes);
+app.use('/api', productRoutes);
 
 
 app.use((req, res, next) => {
