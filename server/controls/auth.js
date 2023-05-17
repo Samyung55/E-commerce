@@ -9,13 +9,13 @@ const csurf = require('csurf');
 const sendEmail = require('../utils/sendEmail');
 
 const signToken = (id, email) => {
-  const secret = process.env.JWT_SECRET;
+    const secretKey = process.env.JWT_SECRET_KEY;
   const payload = {
     email,
     id
   };
 
-  return jwt.sign(payload, secret, { expiresIn: '1h' });
+  const token = jwt.sign(payload, secretKey, { expiresIn: '1h' });
 };
 
 const createSendToken = (user, statusCode, req, res) => {
@@ -35,10 +35,8 @@ const createSendToken = (user, statusCode, req, res) => {
   });
 };
 
-const router = express.Router();
-const csrfProtection = csurf({ cookie: true });
 
-router.post('/login', async (req, res, next) => {
+const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
 
@@ -58,9 +56,9 @@ router.post('/login', async (req, res, next) => {
   } catch (error) {
     return next(error);
   }
-});
+};
 
-router.post('/register', csrfProtection, async (req, res, next) => {
+const register = async (req, res, next) => {
   const { username, email, password } = req.body;
 
   const existingUser = await User.findOne({ email });
@@ -76,9 +74,9 @@ router.post('/register', csrfProtection, async (req, res, next) => {
   });
 
   createSendToken(user, 201, req, res);
-});
+};
 
-router.post('/forgotpassword', async (req, res, next) => {
+const forgotpassword = async (req, res, next) => {
   try {
     const { email } = req.body;
 
@@ -108,9 +106,9 @@ router.post('/forgotpassword', async (req, res, next) => {
   } catch (error) {
     return next(error);
   }
-});
+};
 
-router.post('/resetpassword/:resetToken', async (req, res, next) => {
+const resetpassword = async (req, res, next) => {
     try {
     const resetPasswordToken = crypto
     .createHash('sha256')
@@ -137,6 +135,6 @@ router.post('/resetpassword/:resetToken', async (req, res, next) => {
     } catch (error) {
         return next(error);
     }
-});
+};
         
-        module.exports = router;
+        module.exports = {login, register, forgotpassword, resetpassword}
