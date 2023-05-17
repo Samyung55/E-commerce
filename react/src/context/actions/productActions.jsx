@@ -3,7 +3,7 @@ import axios from 'axios'
 export const getProducts = async () => {
     try {
 
-        const {data} = await axios.get('http://localhost:4000/auth/products')
+        const {data} = await axios.get('http://localhost:4000/api/products')
 
         return data
 
@@ -15,7 +15,7 @@ export const getProducts = async () => {
 
 export const getProductDetails = async (id) => {
     try {
-        const {data} = await axios.get(`http://localhost:4000/auth/products/${id}`)
+        const {data} = await axios.get(`http://localhost:4000/api/products/${id}`)
 
         return data 
 
