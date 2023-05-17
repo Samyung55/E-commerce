@@ -8,6 +8,7 @@ const cors = require('cors');
 const dbConnection = require('./db');
 const AppError = require('./utils/AppError');
 const errorHandler = require('./middleware/error');
+const authRoutes = require('./routes/auth');
 
 const connect = async () => {
   try {
@@ -33,16 +34,12 @@ app.use(cors({
 
 const csrfProtection = csrf({ cookie: true });
 
-app.use('/register', csrfProtection);
+app.use('/api/auth', authRoutes);
 
-// Routes go here
-app.use('/register', require('./routes/register')); // Assuming you have a separate file for the '/register' route
 
 app.use((req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
-
-app.use(errorHandler);
 
 const PORT = 4000;
 
