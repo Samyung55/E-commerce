@@ -1,9 +1,9 @@
 const express = require('express');
 const Product = require('../models/Product');
 
-const router = express.Router();
 
-router.get('/products', async (req, res) => {
+
+const products = async (req, res, next) => {
     try {
         const products = await Product.find({});
         res.status(200).json(products);
@@ -11,9 +11,9 @@ router.get('/products', async (req, res) => {
         console.error(error);
         res.status(500).json({ message: 'Server Error' });
     }
-});
+};
 
-router.get('/products/:id', async (req, res) => {
+const productsid = async (req, res, next) => {
     const id = req.params.id;
     try {
         const product = await Product.findById(id);
@@ -22,6 +22,6 @@ router.get('/products/:id', async (req, res) => {
         console.error(error);
         res.status(500).json({ message: 'Server Error' });
     }
-});
+};
 
-module.exports = router;
+module.exports = {products, productsid}
