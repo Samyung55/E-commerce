@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const csrf = require('csurf');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const serverless = require("serverless-http")
 
 const productRoutes = require('./routes/product')
 const AppError = require('./utils/AppError');
@@ -34,8 +35,8 @@ app.use(cors({
 
 const csrfProtection = csrf({ cookie: true });
 
-app.use('/api/auth', authRoutes);
-app.use('/api', productRoutes);
+app.use('/.netlify/functions/api/auth', authRoutes);
+app.use('/.netlify/functions/api', productRoutes);
 
 
 app.use((req, res, next) => {
@@ -48,3 +49,6 @@ app.listen(PORT, () => {
   connect();
   console.log(`Server is running on port ${PORT}`);
 });
+
+
+module.exports.handler = serverless(app);
