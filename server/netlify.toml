@@ -1,2 +1,4 @@
 [build]
-functions = "functions"
+functions = functions
+command = "npm run build"  # Modify this command if necessary
+publish = "public"  # Modify this directory if necessary
