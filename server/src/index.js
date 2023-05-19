@@ -6,10 +6,10 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const serverless = require("serverless-http")
 
-const productRoutes = require('./routes/product')
+const productRoutes = require('../routes/product')
 const AppError = require('./utils/AppError');
-const errorHandler = require('./middleware/error');
-const authRoutes = require('./routes/auth');
+const errorHandler = require('../middleware/error');
+const authRoutes = require('../routes/auth');
 
 const connect = async () => {
   try {

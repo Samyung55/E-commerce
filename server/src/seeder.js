@@ -1,6 +1,6 @@
 const dotenv = require('dotenv')
 
-const dbConnection = require('./db')
+const dbConnection = require('../db')
 const products = require('./data/products.js')
 const Product = require('./models/Product.js')
 
