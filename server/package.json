@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": ".\node_modules\\.bin\\netlify-lambda.cmd build src",
-    "build": ".\node_modules\\.bin\\netlify-lambda.cmd build src",
+    "start": "./node_modules/.bin/netlify-lambda build index",
+    "build": "./node_modules/.bin/netlify-lambda build index",
     "dev": "nodemon index.js"
   },
   "author": "",
