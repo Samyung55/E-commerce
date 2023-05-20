@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "netlify-lambda build src",
-    "build": "netlify-lambda build src",
+    "start": "netlify-lambda build src/index.js",
+    "build": "netlify-lambda build src/index.js",
     "dev": "nodemon index.js"
   },
   
