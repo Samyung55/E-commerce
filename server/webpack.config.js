@@ -1,8 +1,7 @@
 module.exports = {
     mode: 'production',
     entry: {
-      // Specify the entry point for your functions
-      // Example: 'myFunction': './src/myFunction.js'
+      "index": "./src/index.js",
     },
     output: {
       libraryTarget: 'commonjs',
