@@ -4,11 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "netlify-lambda build src/index.js",
-    "build": "netlify-lambda build src/index.js",
+    "start": "netlify-lambda aerve src",
+    "build": "netlify-lambda build src",
     "dev": "nodemon index.js"
   },
-  
   "author": "",
   "license": "ISC",
   "dependencies": {
