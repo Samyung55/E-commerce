@@ -1,5 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const functions = require('firebase-functions');
 const cookieParser = require('cookie-parser');
 const csrf = require('csurf');
 const mongoose = require('mongoose');
@@ -51,4 +52,4 @@ app.listen(PORT, () => {
 });
 
 
-module.exports.handler = serverless(app);
+exports.app = functions.https.onRequest(app);
