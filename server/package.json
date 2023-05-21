@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "netlify-lambda aerve src",
-    "build": "netlify-lambda build src",
+    "start": "netlify-lambda aerve functions",
+    "build": "netlify-lambda build functions",
     "dev": "nodemon index.js"
   },
   "author": "",
