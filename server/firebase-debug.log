@@ -1,0 +1,21 @@
+[debug] [2023-05-21T19:26:13.624Z] ----------------------------------------------------------------------
+[debug] [2023-05-21T19:26:13.629Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\dell\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2023-05-21T19:26:13.630Z] CLI Version:   12.1.0
+[debug] [2023-05-21T19:26:13.631Z] Platform:      win32
+[debug] [2023-05-21T19:26:13.632Z] Node Version:  v18.13.0
+[debug] [2023-05-21T19:26:13.634Z] Time:          Sun May 21 2023 15:26:13 GMT-0400 (Eastern Daylight Time)
+[debug] [2023-05-21T19:26:13.634Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-05-21T19:26:13.655Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-05-21T19:26:13.657Z] > authorizing via signed-in user (bridgettebee91@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\dell\Documents\GitHub\E-commerce\server
+
