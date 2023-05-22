@@ -5,7 +5,7 @@
       "codebase": "default"
     },
     {
-      "source": ".",
+      "source": "./index.js",
       "codebase": "ecom",
       "ignore": [
         "node_modules",
