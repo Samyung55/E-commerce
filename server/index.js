@@ -5,7 +5,6 @@ const cookieParser = require('cookie-parser');
 const csrf = require('csurf');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const serverless = require("serverless-http")
 
 const productRoutes = require('./src/routes/product')
 const AppError = require('./src/utils/AppError');
