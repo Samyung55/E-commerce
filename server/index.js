@@ -35,8 +35,8 @@ app.use(cors({
 
 const csrfProtection = csrf({ cookie: true });
 
-app.use('/.netlify/functions/api/auth', authRoutes);
-app.use('/.netlify/functions/api', productRoutes);
+app.use('./api/auth', authRoutes);
+app.use('./api', productRoutes);
 
 
 app.use((req, res, next) => {
