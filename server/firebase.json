@@ -5,7 +5,7 @@
       "codebase": "default"
     },
     {
-      "source": "any",
+      "source": ".",
       "codebase": "ecom",
       "ignore": [
         "node_modules",
